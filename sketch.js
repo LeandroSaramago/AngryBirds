@@ -25,10 +25,10 @@ function setup(){
     box5 = new Box(900, 220, 70,70);
     wood3 = new Madeira(840, 220, 145, PI/4);
    wood4 = new Madeira (950, 200, 145, PI/-4);
-   Passaro = new bird (200, 600);
+   Passaro = new bird (200, 200);
    floor2 = new Floor (100, 200, 100, 20)
    wood5 = new Madeira (50, 290, 50, PI/2);
-   cordinha = new Corda (Passaro.body, wood5.body)
+   cordinha = new Corda (Passaro.body, {x:200, y:280})
 }
 
 function draw(){
@@ -50,4 +50,10 @@ function draw(){
    floor2.display();
    wood5.display();
    cordinha.display();
+}
+function mouseDragged(){
+    Matter.Body.setPosition(Passaro.body, {x:mouseX,y:mouseY})
+}
+function mouseReleased(){
+    cordinha.Release()
 }
