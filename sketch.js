@@ -3,8 +3,8 @@ const World= Matter.World;
 const Bodies = Matter.Bodies;
 
 var engine, world;
-var box1, box2, wood, box3, box4, wood2, box5, wood3, wood4, wood5, cordinha
-var floor, back, floor2
+var box1, box2, wood, box3, box4, wood2, box5, wood3, wood4, cordinha
+var floor, back
 var Pig1, Pig2, Passaro
 function preload() {
     back = loadImage("bg.png")
@@ -25,10 +25,8 @@ function setup(){
     box5 = new Box(900, 220, 70,70);
     wood3 = new Madeira(840, 220, 145, PI/4);
    wood4 = new Madeira (950, 200, 145, PI/-4);
-   Passaro = new bird (200, 200);
-   floor2 = new Floor (100, 200, 100, 20)
-   wood5 = new Madeira (50, 290, 50, PI/2);
-   cordinha = new Corda (Passaro.body, {x:200, y:280})
+   Passaro = new bird (180, 200);
+   cordinha = new Corda (Passaro.body, {x:230, y:230})
 }
 
 function draw(){
@@ -47,8 +45,6 @@ function draw(){
    box5.display();
    wood4.display();
    Passaro.display();
-   floor2.display();
-   wood5.display();
    cordinha.display();
 }
 function mouseDragged(){
