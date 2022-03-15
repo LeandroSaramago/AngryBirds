@@ -5,9 +5,10 @@ const Bodies = Matter.Bodies;
 var engine, world;
 var box1, box2, wood, box3, box4, wood2, box5, wood3, wood4, cordinha
 var floor, back
+var bg = "assets/bg2.jpg"
 var Pig1, Pig2, Passaro
 function preload() {
-    back = loadImage("bg.png")
+    backgroundtime();
 }
 function setup(){
     var canvas = createCanvas(1200,400);
@@ -30,7 +31,9 @@ function setup(){
 }
 
 function draw(){
-    background(back);
+if(back){
+background(back);
+}
     Engine.update(engine);
     box1.display();
     floor.display();
@@ -46,6 +49,18 @@ function draw(){
    wood4.display();
    Passaro.display();
    cordinha.display();
+}
+async function backgroundtime(){
+var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo")
+var responseJSON = await response.json();
+var hora = responseJSON.datetime.slice(11, 13)
+if(hora >= 06 && hora <= 18){
+    bg = "assets/bg2.jpg"
+}else{
+    bg = "assets/bg.png"
+}
+back = loadImage(bg)
+console.log(back)
 }
 function mouseDragged(){
     Matter.Body.setPosition(Passaro.body, {x:mouseX,y:mouseY})

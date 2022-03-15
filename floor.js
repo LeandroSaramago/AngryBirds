@@ -11,6 +11,7 @@ class Floor {
     }
     display(){
       var pos =this.body.position;
+      push();
       rectMode(CENTER);
       fill("brown");
       rect(pos.x, pos.y, this.width, this.height);
