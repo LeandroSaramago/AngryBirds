@@ -2,7 +2,7 @@ const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
 
-var engine, world;
+var engine, world, estadopassaro = "noEstilingue"
 var box1, box2, wood, box3, box4, wood2, box5, wood3, wood4, cordinha
 var floor, back
 var bg = "assets/bg2.jpg"
@@ -51,20 +51,23 @@ background(back);
    cordinha.display();
 }
 async function backgroundtime(){
-var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo")
+var response = await fetch("http://worldtimeapi.org/api/timezone/America/Sao_Paulo")
 var responseJSON = await response.json();
 var hora = responseJSON.datetime.slice(11, 13)
 if(hora >= 06 && hora <= 18){
-    bg = "assets/bg2.jpg"
-}else{
     bg = "assets/bg.png"
+}else{
+    bg = "assets/bg2.jpg"
 }
 back = loadImage(bg)
 console.log(back)
 }
 function mouseDragged(){
+ if(estadopassaro === "noEstilingue"){
     Matter.Body.setPosition(Passaro.body, {x:mouseX,y:mouseY})
+ }
 }
 function mouseReleased(){
+    estadopassaro = "Solto"
     cordinha.Release()
 }
